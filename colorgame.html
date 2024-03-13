@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Guessing Game</title>
+<style>
+.color-box {
+width: 100px;
+height: 100px;
+display: inline-block;
+margin: 10px;
+}
+</style>
+</head>
+<body>
+
+<button id="runButton">Run</button>
+<div id="colorContainer"></div>
+
+<script>
+const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange'];
+const colorContainer = document.getElementById('colorContainer');
+document.getElementById('runButton').addEventListener('click', function() {
+colorContainer.innerHTML = ''; // Clear previous colors
+const shuffledColors = colors.sort(() => 0.5 - Math.random()).slice(0, 3);
+shuffledColors.forEach(color => {
+const colorDiv = document.createElement('div');
+colorDiv.className = 'color-box';
+colorDiv.style.backgroundColor = color;
+colorContainer.appendChild(colorDiv);
+});
+});
+</script>
+
+</body>
+</html>
