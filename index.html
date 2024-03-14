@@ -86,9 +86,14 @@ button:active span::before {
 background: #2751cd;
 }
 
-/* Container for the game */
 .game-container {
 text-align: center;
+}
+
+.history-container {
+position: absolute;
+right: 10px;
+top: 10px;
 }
 </style>
 </head>
@@ -100,24 +105,36 @@ text-align: center;
 </button>
 <div id="colorContainer"></div>
 </div>
+<div class="history-container" id="historyContainer"></div>
 
 <script>
 const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange'];
 const colorContainer = document.getElementById('colorContainer');
+const historyContainer = document.getElementById('historyContainer');
 document.getElementById('runButton').addEventListener('click', function() {
-colorContainer.innerHTML = ''; // Clear previous colors
 const shuffledColors = colors.sort(() => 0.5 - Math.random()).slice(0, 3);
+const historyDiv = document.createElement('div');
+
 shuffledColors.forEach(color => {
 const colorDiv = document.createElement('div');
 colorDiv.className = 'color-box';
 colorDiv.style.backgroundColor = color;
-colorContainer.appendChild(colorDiv);
+historyDiv.appendChild(colorDiv);
 
 // Trigger the flip transition
 setTimeout(() => {
 colorDiv.classList.add('flip');
 }, 100);
 });
+
+// Move the previous colors to the history container
+if (colorContainer.children.length > 0) {
+historyContainer.insertBefore(colorContainer.children[0], historyContainer.firstChild);
+}
+
+// Display the new colors
+colorContainer.innerHTML = '';
+colorContainer.appendChild(historyDiv);
 });
 </script>
 
