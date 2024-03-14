@@ -16,6 +16,12 @@ height: 100px;
 display: inline-block;
 margin: 10px;
 border-radius: 15px;
+transition: transform 0.6s;
+transform-style: preserve-3d;
+}
+
+.color-box.flip {
+transform: rotateY(180deg);
 }
 
 button {
@@ -91,6 +97,11 @@ const colorDiv = document.createElement('div');
 colorDiv.className = 'color-box';
 colorDiv.style.backgroundColor = color;
 colorContainer.appendChild(colorDiv);
+
+// Trigger the flip transition
+setTimeout(() => {
+colorDiv.classList.add('flip');
+}, 100);
 });
 });
 </script>
