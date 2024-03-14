@@ -10,6 +10,15 @@
 --royalblue: royalblue;
 }
 
+body, html {
+height: 100%;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
 .color-box {
 width: 100px;
 height: 100px;
@@ -26,8 +35,6 @@ transform: rotateY(180deg);
 
 button {
 border: none;
-display: block;
-position: relative;
 padding: 0.7em 2.4em;
 font-size: 18px;
 background: transparent;
@@ -38,6 +45,7 @@ color: var(--royalblue);
 z-index: 1;
 font-family: inherit;
 font-weight: 500;
+position: relative;
 }
 
 button span {
@@ -77,14 +85,21 @@ color: white;
 button:active span::before {
 background: #2751cd;
 }
+
+/* Container for the game */
+.game-container {
+text-align: center;
+}
 </style>
 </head>
 <body>
 
+<div class="game-container">
 <button id="runButton">Play
 <span></span>
 </button>
 <div id="colorContainer"></div>
+</div>
 
 <script>
 const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange'];
